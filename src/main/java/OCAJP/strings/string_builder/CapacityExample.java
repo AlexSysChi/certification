@@ -1,6 +1,6 @@
-package OCAJP.strings;
+package OCAJP.strings.string_builder;
 
-public class StringBuilderCapasity {
+public class CapacityExample {
     public static void main(String[] args) {
         StringBuilder sb = new StringBuilder("1Z0");
 

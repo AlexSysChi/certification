@@ -1,6 +1,6 @@
-package OCAJP.strings;
+package OCAJP.strings.string;
 
-public class IndexOfMethodDeclarations {
+public class IndexOfMethod {
 
     public static void main(String[] args) {
         String s = "0123456789";

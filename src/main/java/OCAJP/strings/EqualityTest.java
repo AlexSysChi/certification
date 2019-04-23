@@ -1,6 +1,6 @@
 package OCAJP.strings;
 
-public class TestOne {
+public class EqualityTest {
     public static void main(String[] args) {
     //  String s = 4;// java: incompatible types: int cannot be converted to java.lang.String
 

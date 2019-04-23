@@ -1,6 +1,6 @@
-package OCAJP.strings;
+package OCAJP.strings.string_builder;
 
-public class StringBuilderSetLength {
+public class SetLengthMethod {
     public static void main(String[] args) {
 
         char[] chars = {'1', 'Z', '0', '-', '8', '1'};
