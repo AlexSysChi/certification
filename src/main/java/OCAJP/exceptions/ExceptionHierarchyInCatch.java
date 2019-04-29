@@ -1,6 +1,6 @@
 package OCAJP.exceptions;
 
-public class ParentWorkflow {
+public class ExceptionHierarchyInCatch {
     static Integer i;
 
     public static void main(String[] args) {

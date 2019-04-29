@@ -1,4 +1,4 @@
-package OCAJP.variable_declaration;
+package OCAJP.variable;
 
 public class NumericTypesCasting{
 

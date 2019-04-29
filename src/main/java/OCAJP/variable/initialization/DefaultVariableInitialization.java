@@ -1,4 +1,4 @@
-package OCAJP.variable_declaration;
+package OCAJP.variable.initialization;
 
 public class DefaultVariableInitialization {
     static int x, y = 10, z = x*y;  // compiled without error as

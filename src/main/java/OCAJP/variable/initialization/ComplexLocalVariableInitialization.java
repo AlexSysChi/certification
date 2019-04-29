@@ -1,6 +1,6 @@
-package OCAJP.variable_declaration;
+package OCAJP.variable.initialization;
 
-public class CompleLocalVariableInitialization {
+public class ComplexLocalVariableInitialization {
     public static void main(String[] args) {
         int i1 = 10;
         int i2;
