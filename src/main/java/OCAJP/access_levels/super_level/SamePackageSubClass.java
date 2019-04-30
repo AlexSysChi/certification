@@ -1,4 +1,4 @@
-package OCAJP.AccessLevels.super_level;
+package OCAJP.access_levels.super_level;
 
 public class SamePackageSubClass {
 

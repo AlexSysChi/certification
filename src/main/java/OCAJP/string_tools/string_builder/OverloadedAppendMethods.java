@@ -1,4 +1,4 @@
-package OCAJP.strings.string_builder;
+package OCAJP.string_tools.string_builder;
 
 public class OverloadedAppendMethods {
     public static void main(String[] args) {

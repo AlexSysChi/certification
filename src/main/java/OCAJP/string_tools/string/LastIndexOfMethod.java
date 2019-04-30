@@ -1,4 +1,4 @@
-package OCAJP.strings.string;
+package OCAJP.string_tools.string;
 
 public class LastIndexOfMethod {
     public static void main(String[] args) {

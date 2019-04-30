@@ -1,4 +1,4 @@
-package OCAJP.strings.string;
+package OCAJP.string_tools.string;
 
 import java.util.Arrays;
 
@@ -7,7 +7,7 @@ public class JoinMethod {
         String[] strings = {"A", "B", "C"};
         System.out.println(Arrays.toString(strings));
 
-        String joined = String.join("-", strings); // apply delimiter between supplied strings arrays
+        String joined = String.join("-", strings); // apply delimiter between supplied string_tools arrays
         System.out.println(joined);
     }
 }

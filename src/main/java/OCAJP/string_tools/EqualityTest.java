@@ -1,4 +1,4 @@
-package OCAJP.strings;
+package OCAJP.string_tools;
 
 public class EqualityTest {
     public static void main(String[] args) {

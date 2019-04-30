@@ -1,0 +1,34 @@
+Exceptions:
+    1.  Each try block must be followed by catch or finally block (or both)
+    2.  When code try to convert string to a number (in case proper implementation)
+        and string in inappropriate format than NumberFormatException will be thrown
+Class construction:
+    1.  The Only mandatory class component is a constructor.
+        Even it wasn't implemented manually - compile will generate default one
+    2.  Class names mustn't contain Java keywords
+    3.  Top level class mustn't have [static, private, protected] modifiers
+
+StringBuilder:
+    1. StringBuilder object sb could be placed in sout (sb.toString() will be called)
+    2. Default capacity is 16. If sb initialized with some string, capacity will be equal
+        to 16 + length of string attribute
+
+Arrays:
+    1. length field for multidimensional array store size of 'first lay' array
+
+ArrayList:
+    1.  default size of ArrayList is 10, but due to 'lazy actions' size of arrayList will
+        be zero, until first element is put, after that size of arrayList will be equal 10
+        (until resizing if size wouldn't be enough)
+
+Arithmetic operations:
+    1. remainder of the division will have the same sign as divided
+
+Wrappers:
+    1.  Wrappers can't wide from one to another. [ex. Float object couldn't be converted to Double implicitly]
+
+    2. Another situation with converting float to Double, here two step are required:
+        float->double->Double, but when Java wides/wraps types - it is only one step will be implemented
+        (in our example from float to double, but we need to wrap double to Double - it won't be implemented)
+
+

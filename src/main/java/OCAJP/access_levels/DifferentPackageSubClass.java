@@ -1,6 +1,6 @@
-package OCAJP.AccessLevels;
+package OCAJP.access_levels;
 
-import OCAJP.AccessLevels.super_level.SuperClass;
+import OCAJP.access_levels.super_level.SuperClass;
 
 public class DifferentPackageSubClass extends SuperClass {
 
@@ -16,7 +16,9 @@ public class DifferentPackageSubClass extends SuperClass {
         superClass.publicDoer();
 
         // because:
-        // Protected members can be accessed within [package or subclasses] only by subclass object.
+        // Protected members of the class can be accessed within another package only by subclass object
+        //  i.e. only through inheritance, not through direct instantiation of such class
+        // (it's only possible in similar package)
         // In different package you can't access protected member by super class object
 
         */
