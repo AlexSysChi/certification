@@ -56,9 +56,12 @@ Arithmetic operations:
 Wrappers:
     1.  Wrappers can't wide from one to another. [ex. Float object couldn't be converted to Double implicitly]
 
-    2. Another situation with converting float to Double, here two step are required:
+    2.  Another situation with converting float to Double, here two step are required:
         float->double->Double, but when Java wides/wraps types - it is only one step will be implemented
         (in our example from float to double, but we need to wrap double to Double - it won't be implemented)
+Time:
+    1.  LocalDateTime is immutable (https://docs.oracle.com/javase/8/docs/api/index.html)
+        https://www.baeldung.com/java-8-date-time-intro
 
 Variables:
     1.  final class/instance variables must be initialized (only once) before using:

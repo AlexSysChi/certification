@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.time.temporal.ChronoField;
 
 public class DateTimeTest {
     public static void main(String[] args) {
@@ -47,6 +48,9 @@ public class DateTimeTest {
         LocalDate parsedDate = LocalDate.parse("01 02 2018", parsingFormat);
         System.out.println(parsedDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
 
+
+        LocalTime localTime = LocalTime.of(2, 2, 15);
+        System.out.println(localTime.getLong(ChronoField.valueOf("MINUTE_OF_DAY")));
 
         //System.out.println(dateTime.format(shortDateTime));
         //System.out.println(shortDateTime.format(dateTime));

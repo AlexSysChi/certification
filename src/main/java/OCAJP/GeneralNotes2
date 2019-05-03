@@ -1,0 +1,52 @@
+Java Basics:
+    1.  class (could be interface/enum/annotation) declaration in *.java file
+        is mandatory for bytecode file *.class generation
+    2.  any declared member can't be named with keyword
+    3.  top-level class can't be declared as: static, private, protected
+    4.  class declared syntax: MyClass{//code}. Not parentheses after class name
+    5.  compilation of a class with only static block inside (with no main method) - is Ok. But attempt to run such class
+        - will produce an Error (not Exception) because JVM looks for main method and if succeed - load byte code into
+        memory, otherwise Exception is thrown (Main method not found in class ..., please define the main method... ). But
+        before it worked, if we try to run such class - JVM loaded bytecode for it and implemented static block during
+        class loading independently of main method existence
+    6.  static import declaration is: import static ...
+
+Java Data Types:
+    1. Integer object creation methods:
+        *   constructor [1. (String nm), 2. (int i)]
+        *   static method [1. decode(String num)]
+        *   static method [1. valueOf(int int), 2. valueOf(String nm), 3. valueOf(String nm, int radix)]
+                                                                              radix - the base of a system of numeration
+    2. variable scope/shadowing
+        *   it is possible to have local variable with name similar to class or instance one - shadowing
+        *   it is impossible to have both class and instance variables sharing one name (despite the scopes are different)
+        *   it is impossible to have locals variables with the same name (even in 'different' scopes: outer and inner blocks
+            method parameter and method local variable)
+        *   accessing instance variable is possible only through class instantiation
+    3.  if-else: if such construction used without parenthesis - single operator end by semicolon and don't 'interrupt'
+        workflow
+    4.  Character object creation methods:
+        *   constructor (char c ) - single
+        *   static method valueOf(char c) - single
+
+Java Operators and Controls
+    1. in switch's case branches possible arguments:
+        *   literals: [String, integer not bigger than int]
+        *   enum members
+        *   compile-time constants (Strings and primitive 'ints', not wrapper-classes because they are treated not as constants)
+        *   compile-time constants must be declared with final specifier and initialized in the same string
+        *   compile-time constant + literal also treated as compile time constant
+    2.  switch operator can handel int and wrappers, enums, Strings
+    3.  switch doesn't allow duplicates case branches - in such case compilation fails
+
+Java Arrays:
+    1. Arrays:
+        *   sort(T[] arr) - plus versions for primitives
+        *   sort(T[] arr, comparator)
+        *   sort(T[] arr, int fromIndex, int toIndex)
+    2.  array declaration: only int (or less) variable value could be set as array size:
+        int[] array = new int[10L] - will fail
+
+Java Methods and Encapsulation:
+
+

@@ -2,8 +2,12 @@ package OCAJP.variable.scopes;
 
 public class BlockExample {
     static int x = 3;
+    //int x = 7;
 
     public static void main(String[] args) {
+
+        //System.out.println(x);
+
         int x = 5;
 
         {
