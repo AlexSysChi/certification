@@ -7,7 +7,7 @@ public class BlockExample {
         int x = 5;
 
         {
-            //int x = 7; won't compile because we already have x in the method
+            //int x = 7; //won't compile because we already have x in the method
             int y = 9;
         }
         //System.out.println(y); // compilation fails due to y is out of scope

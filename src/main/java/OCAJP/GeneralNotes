@@ -1,7 +1,16 @@
+General hints:
+    1. pay attention variables scope:
+        *   local variable in the method can't be named with method parameter name (which is also local variable)
+        *   local variables can't have ambiguity names even for outer-inner blocks (previous bullet generalizing)
+        *   it's possible to have static (class) variable and instance variable with the same name - shadowing
+        *   local variables declared in the block can't be used outside declaration block
+    2.  static method aren't inherited - shadowing
+
 Exceptions:
     1.  Each try block must be followed by catch or finally block (or both)
     2.  When code try to convert string to a number (in case proper implementation)
         and string in inappropriate format than NumberFormatException will be thrown
+
 Class construction:
     1.  The Only mandatory class component is a constructor.
         Even it wasn't implemented manually - compile will generate default one
@@ -31,4 +40,21 @@ Wrappers:
         float->double->Double, but when Java wides/wraps types - it is only one step will be implemented
         (in our example from float to double, but we need to wrap double to Double - it won't be implemented)
 
+Variables:
+    1.  final class/instance variables must be initialized (only once) before using:
+        * static (class) - before class loaded (direct initialization or in static init block(s))
+        * instance - before instance created (direct initialization, instance init block(s), constructors)
+        * local - could be declared and initialized in different places, but before first using
 
+Inheritance:
+    1. instance of (see: InstanceOfExample)
+        *   if subclass object assigned to superclass reference
+        *   subclass object implements some interface
+        *   than test superclass reference (actually containing subclass object) for
+            instance of the some interface will result true
+        conclusion: if polymorphism is used, than instance of operator will see concrete subclass 'behaviour'
+
+Interface:
+    1.  Form Java 8 it is allowed to have non-abstract methods in interface (static and default ones),
+        BUT there is a limitation: default interface method can't override ones from Object class.
+        'Interface multiple inheritance rule': class declared method always wins
