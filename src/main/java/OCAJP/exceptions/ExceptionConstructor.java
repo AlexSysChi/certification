@@ -17,8 +17,7 @@ class MyException extends Exception {
     }
 
     MyException(Throwable cause) {
-
-        new Exception(cause);
+        super(cause);
     }
 
     MyException(String message,

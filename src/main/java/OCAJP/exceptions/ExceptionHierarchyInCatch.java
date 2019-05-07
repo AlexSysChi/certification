@@ -6,10 +6,14 @@ public class ExceptionHierarchyInCatch {
     public static void main(String[] args) {
         try{
             System.out.println(i.toString());
-        } catch (RuntimeException re) {
+        }
+        catch (RuntimeException re) {
             throw re;
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             System.out.println("e");
+//        } catch (RuntimeException re) {
+//            throw re;
         } finally {
             System.out.println("fin");
         }

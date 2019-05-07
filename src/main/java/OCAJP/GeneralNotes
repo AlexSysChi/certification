@@ -5,17 +5,37 @@ General hints:
         *   it's possible to have static (class) variable and instance variable with the same name - shadowing
         *   local variables declared in the block can't be used outside declaration block
     2.  static method aren't inherited - shadowing
+    3.  instance members aren't accessible from static content unless class instantiation in such context
 
 Exceptions:
     1.  Each try block must be followed by catch or finally block (or both)
-    2.  When code try to convert string to a number (in case proper implementation)
-        and string in inappropriate format than NumberFormatException will be thrown
+    2.  When code try to convert string to a number (in case proper implementation) and string in inappropriate format
+        than NumberFormatException (which extends IllegalArgumentException) will be thrown
+    3.  Alternatives in a multi-catch statement cannot be related by subclassing:
+        catch (NullPointerException | RuntimeException e) or vice versa (see MultiCatchExample)
+    4.  Exception variable (declared in catch block) is implicitly final, and an attempt to reassign it will result in
+        compilation error
+    5.  If catch block try to catch some checked exception and compiler knows that try block will never produce it
+        - compilation fails
+    6.  Exception class has 5 constructors (one protected with two boolean parameters)
+    7.  Order in catch block is important: if wider exception class goes first, than compilation
+        fails because of unreachable exception: exception of shallow class has already been caught
 
 Class construction:
     1.  The Only mandatory class component is a constructor.
         Even it wasn't implemented manually - compile will generate default one
     2.  Class names mustn't contain Java keywords
     3.  Top level class mustn't have [static, private, protected] modifiers
+    4.  Inner classes have access to private members of enclosing class
+    5.  Inner and static nested classes can be declared with private access modifiers,
+        BUT method local and anonymous classes can't (Also not declared as public since it is never accessible outside the method.)
+??? same situation with protected
+    6.  Anonymous inner class can implement only one interface at a time.
+        Also anonymous Inner class can extend a class or can implement an interface but not both at a time.
+    7.  We cant write any constructor for anonymous Inner class because anonymous class does not have any name
+        and while defining constructor class name and constructor name must be same
+    8.  Method local classes have access only to effectively-final variables (like lambdas)
+
 
 StringBuilder:
     1. StringBuilder object sb could be placed in sout (sb.toString() will be called)
@@ -26,9 +46,9 @@ Arrays:
     1. length field for multidimensional array store size of 'first lay' array
 
 ArrayList:
-    1.  default size of ArrayList is 10, but due to 'lazy actions' size of arrayList will
-        be zero, until first element is put, after that size of arrayList will be equal 10
-        (until resizing if size wouldn't be enough)
+    1.  default size of ArrayList is 10, but due to 'lazy actions' size of arrayList will be zero, until first element
+        is put, after that size of arrayList will be equal 10 (until resizing if size wouldn't be enough)
+    2.  Method remove(int index) - returns a value of removed element, but remove(Object o) - returns boolean
 
 Arithmetic operations:
     1. remainder of the division will have the same sign as divided
@@ -46,15 +66,27 @@ Variables:
         * instance - before instance created (direct initialization, instance init block(s), constructors)
         * local - could be declared and initialized in different places, but before first using
 
-Inheritance:
+Polymorphism:
     1. instance of (see: InstanceOfExample)
         *   if subclass object assigned to superclass reference
         *   subclass object implements some interface
         *   than test superclass reference (actually containing subclass object) for
             instance of the some interface will result true
-        conclusion: if polymorphism is used, than instance of operator will see concrete subclass 'behaviour'
+        CONCLUSION: if polymorphism is used, than instance of operator will see concrete subclass 'behaviour'
+    2.  if superclass reference use to store subclasses - only methods declared at superclass level could be invoked,
+        but functionality of such methods will be taken from subclass. i.e. version of overridden method defined by object type.
+    3.  BUT overloaded method defined by reference type
+
+Type Casting:
+    1.  If we try to cast a superclass object to a subclass one and superclass actually refers to superclass object,
+        not on subclass one - ClassCastException will be thrown at runtime, but with successful compilation
 
 Interface:
     1.  Form Java 8 it is allowed to have non-abstract methods in interface (static and default ones),
         BUT there is a limitation: default interface method can't override ones from Object class.
         'Interface multiple inheritance rule': class declared method always wins
+        CONCLUSION: interface default method can't override Object's ones - compilation will fail
+
+Loops:
+    1. in case of unreachable statements in loops (statements after continue without any conditions or inside while(false))
+        - compilation fails
