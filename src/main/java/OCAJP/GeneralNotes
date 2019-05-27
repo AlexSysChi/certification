@@ -35,15 +35,21 @@ Class construction:
     7.  We cant write any constructor for anonymous Inner class because anonymous class does not have any name
         and while defining constructor class name and constructor name must be same
     8.  Method local classes have access only to effectively-final variables (like lambdas)
-
+    9.  When subclass instantiated (skip static block here)
+        *   first step - all init blocks and required constructors works in superclass
+        *   second step - all init blocks and required constructors works in subclass
 
 StringBuilder:
-    1. StringBuilder object sb could be placed in sout (sb.toString() will be called)
-    2. Default capacity is 16. If sb initialized with some string, capacity will be equal
+    1.  StringBuilder object sb could be placed in sout (sb.toString() will be called)
+    2.  Default capacity is 16. If sb initialized with some string, capacity will be equal
         to 16 + length of string attribute
+    3.  haven't concat method
+    4.  insert(int offset, String str). insert should be equal to or less than the actual sb.length
 
 Arrays:
-    1. length field for multidimensional array store size of 'first lay' array
+    1.  length field for multidimensional array store size of 'first lay' array
+    2.  there is no sort(T[] arr) method accepts 2D array, if such array provided - ClassCastException will
+        be thrown, because method try to cast 1D array elements (which are 1D arrays) to Comparable and it's impossible
 
 ArrayList:
     1.  default size of ArrayList is 10, but due to 'lazy actions' size of arrayList will be zero, until first element
@@ -59,6 +65,9 @@ Wrappers:
     2.  Another situation with converting float to Double, here two step are required:
         float->double->Double, but when Java wides/wraps types - it is only one step will be implemented
         (in our example from float to double, but we need to wrap double to Double - it won't be implemented)
+    3.  The equals methods of all wrapper classes first check if the two object are of same class or not.
+        If not, they immediately return false.
+
 Time:
     1.  LocalDateTime is immutable (https://docs.oracle.com/javase/8/docs/api/index.html)
         https://www.baeldung.com/java-8-date-time-intro
@@ -79,16 +88,21 @@ Polymorphism:
     2.  if superclass reference use to store subclasses - only methods declared at superclass level could be invoked,
         but functionality of such methods will be taken from subclass. i.e. version of overridden method defined by object type.
     3.  BUT overloaded method defined by reference type
+    4.  If SuperClass and SubClass have variable with same name, and SuperClass reference is used to call such variable,
+        than SuperClass version of variable is called (CHECK IT)
 
 Type Casting:
     1.  If we try to cast a superclass object to a subclass one and superclass actually refers to superclass object,
         not on subclass one - ClassCastException will be thrown at runtime, but with successful compilation
+    2.  System.out.println able to 'process' origin boolean value without any concatenation with some string
 
 Interface:
     1.  Form Java 8 it is allowed to have non-abstract methods in interface (static and default ones),
         BUT there is a limitation: default interface method can't override ones from Object class.
         'Interface multiple inheritance rule': class declared method always wins
         CONCLUSION: interface default method can't override Object's ones - compilation will fail
+    2.  Trying to override a static method with a non-static method (and vice-versa) in a class will result in a
+        compilation error. Even in case of interfaces, a sub interface cannot override a default method with a static method.
 
 Loops:
     1. in case of unreachable statements in loops (statements after continue without any conditions or inside while(false))

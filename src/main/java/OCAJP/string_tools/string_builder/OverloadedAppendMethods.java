@@ -11,7 +11,7 @@ public class OverloadedAppendMethods {
 
         char[] chars = {'1', 'Z', '0', '-', '8', '1'};
         sb = new StringBuilder();
-        sb.append(chars, 0, chars.length-1);// append(char[], int offset, int length)
+        sb.append(chars, 0, chars.length-1);// append(char[], int offset, int length-number of copying elements)
         sb.append('0'); // append(char)
         sb.append("8"); // append(String)
         System.out.println(sb);
