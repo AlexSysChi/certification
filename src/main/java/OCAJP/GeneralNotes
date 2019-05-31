@@ -6,6 +6,8 @@ General hints:
         *   local variables declared in the block can't be used outside declaration block
     2.  static method aren't inherited - shadowing
     3.  instance members aren't accessible from static content unless class instantiation in such context
+    4.  if both interface and class, implemented it, have similar name field, let's say x, and interface type reference
+        store class object, than call such variable using interface reference will return value from interface
 
 Exceptions:
     1.  Each try block must be followed by catch or finally block (or both)
@@ -90,6 +92,17 @@ Polymorphism:
     3.  BUT overloaded method defined by reference type
     4.  If SuperClass and SubClass have variable with same name, and SuperClass reference is used to call such variable,
         than SuperClass version of variable is called (CHECK IT)
+    5.  Let's say we have class A (parent) and class B (child). Both of classes have their own version of print() method.
+        and in class A default constructor this method is called. And Tricky case with B class object construction:
+        Note that method print() is overridden in class B. Due to polymorphism, the method to be executed is selected
+        depending on the class of the actual object. Here, when an object of class B is created, first B's default
+        constructor (which is not visible in the code but is automatically provided by the compiler because B does not
+        define any constructor explicitly) is called. The first line of this constructor is a call to super(), which
+        invokes A's constructor. A's constructor in turn calls print(). Now, print is a non-private instance method and
+        is therefore polymorphic, which means, the selection of the method to be executed depends on the class of actual
+        object on which it is invoked. Here, since the class of actual object is B, B's print is selected instead of A's
+        print. At this point of time, variable i has not been initialized (because we are still in the middle of
+        initializing A), so its default value i.e. 0 is printed.
 
 Type Casting:
     1.  If we try to cast a superclass object to a subclass one and superclass actually refers to superclass object,
@@ -107,3 +120,8 @@ Interface:
 Loops:
     1. in case of unreachable statements in loops (statements after continue without any conditions or inside while(false))
         - compilation fails
+
+Reflection:
+    1. getClass method return actual object, irrespective of the reference type
+
+

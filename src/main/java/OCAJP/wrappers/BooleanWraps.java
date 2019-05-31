@@ -3,13 +3,14 @@ package OCAJP.wrappers;
 public class BooleanWraps {
     public static void main(String[] args) {
         // all above string_tools produce instance of Boolean with true value
-        final Boolean aTrue = Boolean.TRUE;
-        final Boolean aTrue1 = Boolean.valueOf("true");
-        final Boolean aTrue2 = new Boolean("True");// ignoring case
-        final boolean aTrue3 = Boolean.parseBoolean("tRue");
-        final boolean aTrue4 = Boolean.getBoolean("sasasa");
+        final Boolean aBoolean = Boolean.TRUE;
+        final Boolean aBoolean1 = Boolean.valueOf("true");
+        final Boolean aBoolean2 = new Boolean("True");// ignoring case
+        final boolean aBoolean3 = Boolean.parseBoolean("tRue");
+        final boolean aBoolean4 = Boolean.getBoolean("sasasa");
+        final boolean aBoolean5 = new Boolean(null);
 
-        System.out.println("" + aTrue + aTrue1 + aTrue2 + aTrue3 + aTrue4);
+        System.out.println("" + aBoolean + aBoolean1 + aBoolean2 + aBoolean3 + aBoolean4 + aBoolean5);
 
     }
 }

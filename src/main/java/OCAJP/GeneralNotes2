@@ -10,6 +10,15 @@ Java Basics:
         before it worked, if we try to run such class - JVM loaded bytecode for it and implemented static block during
         class loading independently of main method existence
     6.  static import declaration is: import static ...
+    7.  If the compiler can figure out that something can NEVER happen, then it flags an error. For example, if the
+        compiler knows that ln (Long object), i (Integer object) or d  (Double object)can never point to the same object
+        in any case because they are references to different classes of objects that have no relation (superclass/
+        subclass) between themselves.
+    8.  Every class belongs to a package because as per Section 7.4.2 of JLS, "A compilation unit that has no package
+        declaration is part of an unnamed package." Thus, if you omit the package statement, the class will belong to
+        the unnamed package.
+        Remember that classes in the unnamed package are accessible only to other classes in the unnamed package. It is
+        not possible to import this unnamed package in classes that belong to a named package.
 
 Java Data Types:
     1. Integer object creation methods:
