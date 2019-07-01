@@ -52,6 +52,9 @@ Arrays:
     1.  length field for multidimensional array store size of 'first lay' array
     2.  there is no sort(T[] arr) method accepts 2D array, if such array provided - ClassCastException will
         be thrown, because method try to cast 1D array elements (which are 1D arrays) to Comparable and it's impossible
+    3.  if pass null as a parameter in Arrays.sort(null) - NPE will be thrown (caused by: sort method uses index access)
+    4.  array declaration like {1, 2, 3} can be used in array initialization only (), not in reassignment.
+        But new int[] {1, 3} is ok for reassignment
 
 ArrayList:
     1.  default size of ArrayList is 10, but due to 'lazy actions' size of arrayList will be zero, until first element
