@@ -55,6 +55,9 @@ Arrays:
     3.  if pass null as a parameter in Arrays.sort(null) - NPE will be thrown (caused by: sort method uses index access)
     4.  array declaration like {1, 2, 3} can be used in array initialization only (), not in reassignment.
         But new int[] {1, 3} is ok for reassignment
+    5.  if we declared and initialized arrays of int (int[] i = {1}), and after that try to assign it to
+        long l = i; - compilation fails (because arrays know their types to store)
+    6.  array size during initialization can be int not long
 
 ArrayList:
     1.  default size of ArrayList is 10, but due to 'lazy actions' size of arrayList will be zero, until first element
@@ -82,6 +85,13 @@ Variables:
         * static (class) - before class loaded (direct initialization or in static init block(s))
         * instance - before instance created (direct initialization, instance init block(s), constructors)
         * local - could be declared and initialized in different places, but before first using
+    2.  local variable declaration:
+        *   class variable (with static specifier) or instance variable could be shadowed by local variable declared in
+            closure scope (method-block, any condition block). It also could be used in different blocks followed each other
+        *   BUT local variables can't shadow each other (for instance, when one block is inside another)
+        *   It's impossible to have class and instance variable with the sane name (I believe, because that we can use
+            instance variable to refer class(static) varaible and in such a case - uncertainty will produce compile error)
+    3.  hiding vs shadowing: https://dzone.com/articles/variable-shadowing-and-hiding-in-java
 
 Polymorphism:
     1. instance of (see: InstanceOfExample)
@@ -105,7 +115,19 @@ Polymorphism:
         is therefore polymorphic, which means, the selection of the method to be executed depends on the class of actual
         object on which it is invoked. Here, since the class of actual object is B, B's print is selected instead of A's
         print. At this point of time, variable i has not been initialized (because we are still in the middle of
-        initializing A), so its default value i.e. 0 is printed.
+        initializing A), so its default value i.e. 0 is printed
+
+Method overriding:
+    1.  private method can't be overridden (because they are belong to a class ONLY)
+    2.  with declared checked exception: it's allowed to override such method without specifying that exception is possible,
+        but if we use supertype reference, which is actually refer to a subtype, compiler thinks that we call method which is
+        could throw an exception and in this case it will produce an compilation error. But if we use subtype reference
+        for the same case, calling overridden method won't produce any compilation problem
+    3.  Object class method can't be overridden in default interface method, because class version of the method has a
+        higher priority that is why interface method of version would be unreachable. See details:
+        1. https://stackoverflow.com/questions/24016962/java8-why-is-it-forbidden-to-define-a-default-method-for-a-method-from-java-lan/24026292
+        2. http://www.lambdafaq.org/why-cant-default-methods-override-equals-hashcode-and-tostring/
+        3. http://mail.openjdk.java.net/pipermail/lambda-dev/2013-March/008435.html
 
 Type Casting:
     1.  If we try to cast a superclass object to a subclass one and superclass actually refers to superclass object,
@@ -127,4 +149,47 @@ Loops:
 Reflection:
     1. getClass method return actual object, irrespective of the reference type
 
+switch-case:
+    1.  allowed types for switch:
+        *   integers types (also wrappers) until int type size (inclusively) long not allowed
+        *   Strings (syntax sugar based on hashcode using)
+         *  enums
+    2.  types for case:
+        *   literals (integers, Strings)
+        *   compile-time constants variables of allowed types (with final specifier and initialization in one string).
+            Wrappers aren't allowed because they are evaluated at runtime
+        *   enum
+        *   arrays elements aren't allowed even in case array declared as final (it's not protect us from reassignment)
+    3.  for String variables comparison method equals is used, not equalsIgnoreCase
 
+unreachable statements:
+    1. in if else(false) - will compile and run successfully, but pay close attention to the logic
+
+equals method:
+    1.  default implementations is comparing object references
+    2.  overridden implementations usually check instanceof firstly
+
+static:
+    1.  static interface method could be be called only through interface method, but not
+        through object reference (implements this interface). Don't work like static class methods.
+
+number systems:
+    1.  decimal (without prefix)            - 10 based: 0 1 2 3 4 5 6 7 8 9
+    2.  octal (with o or O prefix)          - 8 based:  0 1 2 3 4 5 6 7
+    3.  hexadecimal (with 0x or 0X prefix)  - 16 based: 0 1 2 3 4 5 6 7 8 9 A B C D E F
+    4.  binary (with 0b or 0B prefix)       - 2 based: 0 1
+
+    *   integer literal postfix l or L is allowed to use with any numeric system
+
+equality check: == or equals
+     1. == for primitive types comparing values
+     2. == for reference types comparing reference equality
+     3. == for comparing wrapper and primitive will un-box value from wrapper
+     5. == can't be applied for different types
+     4. equals (applicable only for reference types). Default implementation is ==. Overriden
+        implementation usually starts with instanceof
+
+
+assignment:
+    double d = 10; - fine
+    Double d = 10; - fail

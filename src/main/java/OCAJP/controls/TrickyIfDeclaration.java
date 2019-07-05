@@ -13,5 +13,11 @@ public class TrickyIfDeclaration {
             System.out.println(">0");
             else
             System.out.println("?");
+
+            boolean b;
+
+            if (b = 3 > arr[0]++ ) {
+                System.out.println(b);
+            }
     }
 }

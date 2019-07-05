@@ -1,6 +1,6 @@
 package OCAJP.unreachable;
 
-public class UnreachableStatementExampleOne {
+public class UnreachableStatementInsideForLoop {
 
     public static void main(String[] args) {
         String[] sts = {"A", "B", "C"};
