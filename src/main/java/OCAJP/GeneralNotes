@@ -191,5 +191,5 @@ equality check: == or equals
 
 
 assignment:
-    double d = 10; - fine
-    Double d = 10; - fail
+    double d = 10; - fine (one step widening int 10 -> double 10.0 )
+    Double d = 10; - fail (because two step widening required: int 10 -> double 10.0 -> Double 10.0)
