@@ -58,6 +58,8 @@ Arrays:
     5.  if we declared and initialized arrays of int (int[] i = {1}), and after that try to assign it to
         long l = i; - compilation fails (because arrays know their types to store)
     6.  array size during initialization can be int not long
+    7.  deepEquals consumes two arrays of Object, it means that it doesn't work with arrays of primitives. But for two 1D
+        arrays of Object deepEquals also woks fine.
 
 ArrayList:
     1.  default size of ArrayList is 10, but due to 'lazy actions' size of arrayList will be zero, until first element
@@ -69,12 +71,12 @@ Arithmetic operations:
 
 Wrappers:
     1.  Wrappers can't wide from one to another. [ex. Float object couldn't be converted to Double implicitly]
-
     2.  Another situation with converting float to Double, here two step are required:
         float->double->Double, but when Java wides/wraps types - it is only one step will be implemented
         (in our example from float to double, but we need to wrap double to Double - it won't be implemented)
     3.  The equals methods of all wrapper classes first check if the two object are of same class or not.
         If not, they immediately return false.
+    4. Method parse(String s) can throw
 
 Time:
     1.  LocalDateTime is immutable (https://docs.oracle.com/javase/8/docs/api/index.html)
